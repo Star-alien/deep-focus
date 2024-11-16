@@ -18,14 +18,24 @@ def get_tasks():
     return jsonify(tasks_data)
 
 # API to analyze task priority
+from flask import request, jsonify
+
 @app.route("/tasks/predict", methods=["POST"])
 def predict_priority():
-    task = request.json.get("task")
+    # Ensure request is in JSON format
+    if not request.is_json:
+        return jsonify({"error": "Request must be in JSON format"}), 400
+
+    task = request.json.get("task")  # Get the 'task' field from the JSON body
+    
     if not task:
         return jsonify({"error": "Task description is required"}), 400
     
+    # Proceed with the prediction logic
     priority = predict_task_priority(task)
+    
     return jsonify({"task": task, "predicted_priority": priority})
+
 
 # API to analyze focus logs
 @app.route("/focus_logs/analyze", methods=["GET"])
