@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+echo
+echo '🏗️👷 Just ensuring the code you wrote is healthy...'
+echo
+npm run lint-staged
