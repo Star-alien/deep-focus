@@ -1,24 +1,12 @@
 from flask import Flask, jsonify, request
-import json
-import os
-from models import predict_task_priority, analyze_focus_logs
+from models import predict_task_priority, analyze_focus_logs, generate_synthetic_tasks, generate_synthetic_focus_logs, generate_synthetic_iot_data
 
 app = Flask(__name__)
 
-# Load synthetic data
-DATA_DIR = "data"
-tasks_file = os.path.join(DATA_DIR, "tasks.json")
-focus_logs_file = os.path.join(DATA_DIR, "focus_logs.json")
-iot_file = os.path.join(DATA_DIR, "iot_mock.json")
-
-with open(tasks_file, "r") as f:
-    tasks_data = json.load(f)
-
-with open(focus_logs_file, "r") as f:
-    focus_logs_data = json.load(f)
-
-with open(iot_file, "r") as f:
-    iot_data = json.load(f)
+# Generate synthetic data
+tasks_data = generate_synthetic_tasks()
+focus_logs_data = generate_synthetic_focus_logs()
+iot_data = generate_synthetic_iot_data()
 
 @app.route("/")
 def home():
