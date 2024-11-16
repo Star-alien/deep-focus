@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -15,7 +16,56 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main{
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.login-section{
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(90deg, #3981ed2c, rgb(255, 255, 255));
+}
+.blue{
+  height: 100%;
+  width: 35%;
+  background-color: #3980ED;
+  background-image: url("@/public/mask.png");
+  background-size: cover;
+  color: #ffffff;
+  display: grid;
+  place-content: center;
+}
+.login-input{
+  width: 80%;
+  height: 3em;
+  padding: 7px;
+  border: 1px solid #A6A6A680;
+  outline: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.sign-btn{
+  width: 80%;
+  height: 3em;
+  padding: 7px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: #3980ED;
+  color: #ffffff;
+}
+.google-btn{
+  width: 80%;
+  height: 3em;
+  padding: 7px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border: 1px solid #A6A6A680;
 }
